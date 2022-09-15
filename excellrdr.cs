@@ -7,10 +7,10 @@ namespace excellreader
 {
     internal class excellrdr
     {
-        private DataTable ConvertExcelltoDataTable(string filename)
+        private DataTable ConvertExcelltoDataTable(string path)
         {
             string conStr = "";
-            string FilePath = "D:/Core/" + filename;
+            string FilePath = path;
             string Extension = ".xlsx";
             switch (Extension)
             {
@@ -69,7 +69,8 @@ namespace excellreader
             DataSet ds = new DataSet();
             foreach (FileInfo file in Files)
             {
-                ds.Tables.Add(ConvertExcelltoDataTable(file.Name));
+                string path = filepath+"/"+file.Name;
+                ds.Tables.Add(ConvertExcelltoDataTable(path));
             }
             return ds;
         }
