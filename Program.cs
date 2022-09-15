@@ -6,7 +6,7 @@ Console.WriteLine("Hello, World!");
 excellrdr excellreader = new excellrdr();
 
 DataTable dt = excellreader.Get();
-int i = excellreader.Get().Rows.Count;
+int i = dt.Rows.Count;
 Console.WriteLine(i);
 foreach (DataRow row in dt.Rows)
 {
