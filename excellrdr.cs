@@ -28,10 +28,7 @@ namespace excellreader
             OleDbDataAdapter oda = new OleDbDataAdapter();
 
             DataTable dt = new DataTable();
-
             cmdExcel.Connection = connExcel;
-            //Get the name of First Sheet
-
             connExcel.Open();
 
             DataTable dtExcelSchema;
@@ -63,10 +60,11 @@ namespace excellreader
         }
         public DataSet GetAllfiles(string filepath)
         {
-            DirectoryInfo d = new DirectoryInfo(filepath); //Assuming Test is your Folder
-            FileInfo[] Files = d.GetFiles("*.xlsx"); //Getting Text files
+            DirectoryInfo d = new DirectoryInfo(filepath);
+            FileInfo[] Files = d.GetFiles("*.xlsx");
 
             DataSet ds = new DataSet();
+            
             foreach (FileInfo file in Files)
             {
                 string path = filepath+"/"+file.Name;
