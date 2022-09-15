@@ -4,7 +4,7 @@ using System.Data;
 
 Console.WriteLine("Hello, World!");
 excellrdr excellreader = new excellrdr();
-DataSet ds = excellreader.GetAllfiles();
+DataSet ds = excellreader.GetAllfiles(@"D:\Core");
 DataTable dt = ds.Tables[0];
 //int i = dt.Rows.Count;
 //excellreader.GetAllfiles();
