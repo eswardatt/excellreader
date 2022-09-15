@@ -7,7 +7,7 @@ namespace excellreader
 {
     internal class excellrdr
     {
-        private DataTable GetSinglefile(string filename)
+        private DataTable ConvertExcelltoDataTable(string filename)
         {
             string conStr = "";
             string FilePath = "D:/Core/" + filename;
@@ -61,7 +61,7 @@ namespace excellreader
 
 
         }
-        public DataSet GetAllfiles(string filepath)
+        public DataSet ConvertAllExcellFilestoDataSet(string filepath)
         {
             DirectoryInfo d = new DirectoryInfo(filepath); //Assuming Test is your Folder
             FileInfo[] Files = d.GetFiles("*.xlsx"); //Getting Text files
@@ -69,7 +69,7 @@ namespace excellreader
             DataSet ds = new DataSet();
             foreach (FileInfo file in Files)
             {
-                ds.Tables.Add(GetSinglefile(file.Name));
+                ds.Tables.Add(ConvertExcelltoDataTable(file.Name));
             }
             return ds;
         }
