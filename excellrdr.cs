@@ -61,7 +61,7 @@ namespace excellreader
 
 
         }
-        public DataSet ConvertAllExcellFilestoDataSet(string filepath)
+        public DataSet GetAllfiles(string filepath)
         {
             DirectoryInfo d = new DirectoryInfo(filepath); //Assuming Test is your Folder
             FileInfo[] Files = d.GetFiles("*.xlsx"); //Getting Text files
