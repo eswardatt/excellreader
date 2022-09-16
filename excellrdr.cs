@@ -1,10 +1,7 @@
-﻿using System.Data;
-using System.Data.OleDb;
-
-
-
-namespace excellreader
+﻿namespace excellreader
 {
+    using System.Data;
+    using System.Data.OleDb;
     internal class excellrdr
     {
         private DataTable ConvertExcelltoDataTable(string path)
@@ -28,7 +25,10 @@ namespace excellreader
             OleDbDataAdapter oda = new OleDbDataAdapter();
 
             DataTable dt = new DataTable();
+
             cmdExcel.Connection = connExcel;
+            //Get the name of First Sheet
+
             connExcel.Open();
 
             DataTable dtExcelSchema;
@@ -58,20 +58,23 @@ namespace excellreader
 
 
         }
-        public DataSet ConvertAllExcellFilestoDataSet(string filepath)
+        public DataSet ReadAllExcellFiles(string filepath)
         {
             DirectoryInfo d = new DirectoryInfo(filepath);
             FileInfo[] Files = d.GetFiles("*.xlsx");
-
             DataSet ds = new DataSet();
-            
-            foreach (FileInfo file in Files)
+            if (Files != null)
             {
-                string path = filepath+"/"+file.Name;
-                ds.Tables.Add(ConvertExcelltoDataTable(path));
+                foreach (FileInfo file in Files)
+                {
+                    string path = filepath + "/" + file.Name;
+                    ds.Tables.Add(ConvertExcelltoDataTable(path));
+                }
             }
             return ds;
         }
+
+        
     }
 
 }
